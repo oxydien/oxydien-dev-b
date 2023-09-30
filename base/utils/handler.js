@@ -3,7 +3,7 @@ import {
   OkMessage,
   UnauthorizedMessage,
 } from "../keys/messages.js";
-import { PostKey } from "./keys_json.js";
+import { PostKey, setupKeys } from "./keys_json.js";
 import {
   DEBUG,
   channelIds,
@@ -14,6 +14,7 @@ import {
   // eslint-disable-next-line no-unused-vars
   updatePlaylists,
 } from "../../module.js";
+import { setupDatabases } from "./db-handler.js";
 
 export function handleNormalRequest(route) {
   return async (req, res) => {
@@ -38,6 +39,8 @@ export function handleNormalRequest(route) {
 }
 
 export function handleServerStart() {
+  setupDatabases();
+  setupKeys();
   // eslint-disable-next-line no-unused-vars
   for (const channel in channelIds) {
     checkForNewVideos(channelIds[channel]);

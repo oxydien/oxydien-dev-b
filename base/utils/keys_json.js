@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
+import { LOG } from "module";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -23,7 +24,19 @@ export const resolveAliasPath = (alias) => {
   return path.resolve(__dirname, aliasMapping[alias]);
 };
 
-const allKeys = JSON.parse(fs.readFileSync(resolveAliasPath("@keys")));
-export const ytKey = allKeys.yt;
-export const PostKey = allKeys.post;
-export const DeleteKey = allKeys.delete;
+export function setupKeys() {
+  const keysPath = path.join(__dirname, "..", "..", "keys.json");
+  const defaultKeys = { post: "", delete: "", yt: "" };
+  if (!fs.existsSync(keysPath)) {
+    LOG("Creating keys.json")
+    fs.writeFileSync(keysPath, JSON.stringify(defaultKeys));
+  }
+  const allKeys = JSON.parse(fs.readFileSync(resolveAliasPath("@keys")));
+  ytKey = allKeys.yt;
+  PostKey = allKeys.post;
+  DeleteKey = allKeys.delete;
+}
+
+export var ytKey;
+export var PostKey;
+export var DeleteKey;

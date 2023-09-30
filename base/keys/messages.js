@@ -135,5 +135,7 @@ export function InternalServerErrorMessage(req, error = null) {
     message.error = error;
   }
 
+  message.github = "Please report this issue to: <https://github.com/oxydien/oxydien-dev-b>"
+
   return message;
 }
