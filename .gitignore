@@ -1,0 +1,5 @@
+keys.json
+logs/*
+node_modules/
+base/database/*
+tests/*

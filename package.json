@@ -1,0 +1,34 @@
+{
+  "name": "oxydien_backend",
+  "version": "0.0.2",
+  "description": "Backend for oxydien's website",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "oxydien",
+    "backend",
+    "express"
+  ],
+  "author": "oxydien",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "esm": "^3.2.25"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "chalk": "^5.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.7.1",
+    "express-rate-limiter": "^1.3.1",
+    "http": "^0.0.1-security",
+    "serve-favicon": "^2.5.0",
+    "sharp": "^0.32.5",
+    "sqlite3": "^5.1.6"
+  }
+}
